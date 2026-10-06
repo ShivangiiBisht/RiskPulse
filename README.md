@@ -1,3 +1,37 @@
+# Risk Engine (sphackathon)
+
+AI/NLP financial risk engine: ingests unstructured text (news + social), scores sentiment, classifies events and
+estimates impact, then feeds downstream modules (tactical index rebalancer / portfolio stress test).
+
+| Part | Stack | Folder |
+|---|---|---|
+| Dashboard | Next.js | `app/` |
+| Risk Engine API | FastAPI + SQLite | `backend/` |
+
+## Run the backend
+
+```bash
+cd backend
+python -m venv .venv
+.venv\Scripts\activate            # Windows (Mac/Linux: source .venv/bin/activate)
+pip install -r requirements.txt
+cp .env.example .env              # optional: add FINNHUB_API_KEY
+uvicorn app.main:app --reload     # http://localhost:8000/docs
+```
+
+Sources: Google News RSS and GDELT (no key), Finnhub (optional free key), Kaggle stock tweets replayed from
+`backend/data/stock_tweets.csv`. Trigger ingestion with `POST /ingest/all`, inspect with `GET /stats` and
+`GET /documents`. Set `OFFLINE_MODE=1` to serve only cached responses for a safe demo.
+
+## Run the frontend
+
+```bash
+npm install
+npm run dev                       # http://localhost:3000
+```
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
