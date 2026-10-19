@@ -1,12 +1,16 @@
 from datetime import datetime, timezone
 from typing import Callable
 
-from fastapi import BackgroundTasks, FastAPI, Query
+from fastapi import BackgroundTasks, FastAPI, HTTPException, Query
+from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import FINNHUB_API_KEY, FRONTEND_ORIGINS, OFFLINE_MODE, TWEETS_CSV_PATH
-from app.db import get_stats, list_documents
-from app.entities import COMPANY_QUERIES, MACRO_QUERIES, TICKER_ALIASES
+from app.db import get_stats, list_documents, list_signals
+from app.engine import rebalancer, sandbox, stress
+from app.engine.events import EVENT_TYPES
+from app.engine.scoring import score_pending
+from app.entities import COMPANY_QUERIES, MACRO_QUERIES, SECTORS, TICKER_ALIASES
 from app.ingestion.base import BaseSource
 from app.ingestion.finnhub_news import FinnhubNewsSource
 from app.ingestion.gdelt_doc import GdeltDocSource
@@ -33,6 +37,7 @@ def _run_job(job_name: str, source_factory: Callable[[], BaseSource]) -> None:
     JOBS[job_name] = {"status": "running", "started_at": _now()}
     try:
         stats = run_ingestion(source_factory())
+        stats["scoring"] = score_pending()  # turn new documents into risk signals right away
         JOBS[job_name] = {"status": "done", "finished_at": _now(), "stats": stats}
     except Exception as error:  # surface any failure through /ingest/jobs
         JOBS[job_name] = {"status": "failed", "finished_at": _now(), "error": repr(error)}
@@ -57,7 +62,12 @@ def health():
 
 @app.get("/tickers")
 def tickers():
-    return TICKER_ALIASES
+    return {t: {"aliases": aliases, "sector": SECTORS.get(t)} for t, aliases in TICKER_ALIASES.items()}
+
+
+@app.get("/event-types")
+def event_types():
+    return EVENT_TYPES
 
 
 @app.post("/ingest/finnhub")
@@ -129,3 +139,87 @@ def documents(
 @app.get("/stats")
 def stats():
     return get_stats()
+
+
+# ------------------------------------------------------------ Risk Engine output
+@app.post("/engine/score")
+def engine_score(background_tasks: BackgroundTasks):
+    """Score any documents that are still unscored (normally done automatically after ingestion)."""
+    def job():
+        JOBS["scoring"] = {"status": "running", "started_at": _now()}
+        JOBS["scoring"] = {"status": "done", "finished_at": _now(), "stats": {"scoring": score_pending()}}
+
+    background_tasks.add_task(job)
+    return {"job": "scoring", "status": "queued"}
+
+
+@app.get("/signals")
+def signals(
+    ticker: str | None = None,
+    event_type: str | None = None,
+    min_impact: int = Query(1, ge=1, le=10),
+    provider: str | None = None,
+    since: str | None = None,
+    limit: int = Query(100, ge=1, le=1000),
+):
+    """Structured risk signals: sentiment [-1,1], event type, impact [1,10], evidence and score breakdown."""
+    return list_signals(ticker, event_type, min_impact, provider, since, limit)
+
+
+# ----------------------------------------------------------- Module A: rebalancer
+@app.get("/rebalance/current")
+def rebalance_current():
+    return rebalancer.current_snapshot()
+
+
+@app.get("/rebalance/timeline")
+def rebalance_timeline(max_points: int = Query(60, ge=2, le=200)):
+    return rebalancer.timeline(max_points)
+
+
+# --------------------------------------------------------- Module B: stress test
+class StressRequest(BaseModel):
+    event_type: str
+    impact: int = 8
+    tickers: list[str] = []
+    headline: str | None = None
+
+
+@app.get("/stress/auto")
+def stress_auto(threshold: int = Query(stress.TRIGGER_IMPACT, ge=1, le=10)):
+    return stress.auto_trigger(threshold)
+
+
+@app.post("/stress/run")
+def stress_run(request: StressRequest):
+    return stress.run_stress(request.event_type, request.impact, request.tickers, request.headline)
+
+
+# ------------------------------------------------------------------ what-if sandbox
+class HeadlineRequest(BaseModel):
+    text: str
+
+
+@app.get("/sandbox/scenarios")
+def sandbox_scenarios():
+    return sandbox.load_scenarios()
+
+
+@app.post("/sandbox/headline")
+def sandbox_headline(request: HeadlineRequest):
+    if len(request.text.strip()) < 10:
+        raise HTTPException(status_code=422, detail="Headline is too short")
+    return sandbox.inject_headline(request.text)
+
+
+@app.post("/sandbox/scenario/{scenario_id}")
+def sandbox_scenario(scenario_id: str):
+    report = sandbox.run_scenario(scenario_id)
+    if report is None:
+        raise HTTPException(status_code=404, detail="Unknown scenario")
+    return report
+
+
+@app.post("/sandbox/reset")
+def sandbox_reset():
+    return sandbox.reset()

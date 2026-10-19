@@ -51,3 +51,35 @@ def normalize_ticker(value) -> str | None:
         return None
     candidate = str(value).strip().upper().lstrip("$")
     return candidate if candidate in TICKER_ALIASES else None
+
+
+# ---- Sector map and risk betas (used for contagion, risk-off tilt and stress tests) ----
+SECTORS: dict[str, str] = {
+    "AAPL": "Technology", "MSFT": "Technology", "GOOGL": "Technology",
+    "META": "Technology", "NVDA": "Technology",
+    "AMZN": "Consumer Discretionary", "TSLA": "Consumer Discretionary",
+    "JPM": "Financials", "GS": "Financials", "BAC": "Financials",
+    "C": "Financials", "WFC": "Financials",
+    "XOM": "Energy", "CVX": "Energy",
+    "JNJ": "Healthcare", "PFE": "Healthcare",
+    "WMT": "Consumer Staples", "KO": "Consumer Staples",
+}
+
+# Illustrative market betas per sector (assumption, documented in the README).
+SECTOR_BETA: dict[str, float] = {
+    "Technology": 1.1, "Consumer Discretionary": 1.1, "Financials": 1.2,
+    "Energy": 1.0, "Healthcare": 0.7, "Consumer Staples": 0.6,
+}
+
+
+def sector_of(ticker: str) -> str:
+    return SECTORS.get(ticker, "Other")
+
+
+def beta_of(ticker: str) -> float:
+    return SECTOR_BETA.get(sector_of(ticker), 1.0)
+
+
+def peers_of(ticker: str) -> list[str]:
+    sector = SECTORS.get(ticker)
+    return [other for other in TICKER_ALIASES if other != ticker and SECTORS.get(other) == sector]
