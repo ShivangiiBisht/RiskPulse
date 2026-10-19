@@ -8,7 +8,7 @@
 
 **Demo Video Link:** [\[YouTube unlisted link\]](https://youtu.be/EB2u-bm1iiA)
 
-**Slide Deck Link (if hosted externally):** [\[presentation link\]](https://drive.google.com/file/d/1VTJw0oq697NcqbUNJYUfujPqbSNOgRS0/view?usp=sharing)
+**Slide Deck Link:** [\[presentation link\]](https://drive.google.com/file/d/1VTJw0oq697NcqbUNJYUfujPqbSNOgRS0/view?usp=sharing)
 
 ## 1. Project Overview / Problem Statement & Approach
 
