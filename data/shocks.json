@@ -1,0 +1,18 @@
+{
+  "Geopolitical":       {"equity_shock": -0.10, "rate_shift_bp": -25, "spread_shift_bp": 150,
+                         "rationale": "Flight to quality: equities fall, government yields dip, credit spreads widen"},
+  "Macroeconomic":      {"equity_shock": -0.07, "rate_shift_bp": 100, "spread_shift_bp": 75,
+                         "rationale": "Hawkish repricing: yields jump, equities de-rate, spreads widen moderately"},
+  "Credit Event":       {"equity_shock": -0.12, "rate_shift_bp": -50, "spread_shift_bp": 250,
+                         "rationale": "Credit contagion: sharp spread widening, equity sell-off, rates rally"},
+  "Regulatory":         {"equity_shock": -0.05, "rate_shift_bp": 0, "spread_shift_bp": 50,
+                         "rationale": "Sector-specific repricing with mild credit impact"},
+  "Merger/Acquisition": {"equity_shock": -0.02, "rate_shift_bp": 0, "spread_shift_bp": 10,
+                         "rationale": "Limited systemic impact"},
+  "Earnings":           {"equity_shock": -0.04, "rate_shift_bp": 0, "spread_shift_bp": 20,
+                         "rationale": "Idiosyncratic earnings disappointment"},
+  "Product Launch":     {"equity_shock": -0.01, "rate_shift_bp": 0, "spread_shift_bp": 0,
+                         "rationale": "Negligible"},
+  "Other":              {"equity_shock": -0.01, "rate_shift_bp": 0, "spread_shift_bp": 5,
+                         "rationale": "Unclassified event: minimal precautionary shock"}
+}

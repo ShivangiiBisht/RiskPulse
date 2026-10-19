@@ -1,0 +1,61 @@
+asset_id,asset_type,subtype,counterparty,ticker,sector,rating,notional_musd,market_value_musd,duration,convexity,pd,lgd,delta,direction
+LOA-001,loan,term_loan,Corporate Borrower 01,AMZN,Consumer Discretionary,A,94.2,94.17,0,0,0.00078,0.45,0,0
+LOA-002,loan,term_loan,Corporate Borrower 02,META,Technology,A,87.7,87.66,0,0,0.00114,0.45,0,0
+LOA-003,loan,term_loan,Corporate Borrower 03,GOOGL,Technology,B,62.2,61.28,0,0,0.03283,0.45,0,0
+LOA-004,loan,term_loan,Corporate Borrower 04,TSLA,Consumer Discretionary,BBB,70.5,70.45,0,0,0.00164,0.45,0,0
+LOA-005,loan,term_loan,Corporate Borrower 05,TSLA,Consumer Discretionary,B,62.0,60.76,0,0,0.04458,0.45,0,0
+LOA-006,loan,term_loan,Corporate Borrower 06,GS,Financials,A,95.9,95.87,0,0,0.00073,0.45,0,0
+LOA-007,loan,term_loan,Corporate Borrower 07,CVX,Energy,BBB,47.8,47.76,0,0,0.0019,0.45,0,0
+LOA-008,loan,term_loan,Corporate Borrower 08,C,Financials,A,29.3,29.29,0,0,0.00069,0.45,0,0
+LOA-009,loan,term_loan,Corporate Borrower 09,WFC,Financials,B,46.5,45.8,0,0,0.03322,0.45,0,0
+LOA-010,loan,term_loan,Corporate Borrower 10,JNJ,Healthcare,B,32.5,31.65,0,0,0.05782,0.45,0,0
+LOA-011,loan,term_loan,Corporate Borrower 11,GOOGL,Technology,B,49.3,48.2,0,0,0.0496,0.45,0,0
+LOA-012,loan,term_loan,Corporate Borrower 12,WFC,Financials,B,39.2,38.6,0,0,0.03395,0.45,0,0
+LOA-013,loan,term_loan,Corporate Borrower 13,JPM,Financials,BBB,118.5,118.35,0,0,0.0028,0.45,0,0
+LOA-014,loan,term_loan,Corporate Borrower 14,AMZN,Consumer Discretionary,BB,47.8,47.53,0,0,0.01245,0.45,0,0
+LOA-015,loan,term_loan,Corporate Borrower 15,WFC,Financials,BBB,57.0,56.95,0,0,0.00189,0.45,0,0
+LOA-016,loan,term_loan,Corporate Borrower 16,GS,Financials,A,80.9,80.87,0,0,0.00074,0.45,0,0
+LOA-017,loan,term_loan,Corporate Borrower 17,JPM,Financials,BBB,66.2,66.14,0,0,0.00198,0.45,0,0
+LOA-018,loan,term_loan,Corporate Borrower 18,KO,Consumer Staples,BBB,88.5,88.39,0,0,0.00278,0.45,0,0
+LOA-019,loan,term_loan,Corporate Borrower 19,MSFT,Technology,BBB,102.2,102.07,0,0,0.00273,0.45,0,0
+LOA-020,loan,term_loan,Corporate Borrower 20,XOM,Energy,BBB,26.6,26.57,0,0,0.00288,0.45,0,0
+BON-021,bond,corporate_bond,Issuer Citigroup,C,Financials,A,64.2,66.22,5.56,27.82,0,0,0,0
+BON-022,bond,corporate_bond,Issuer Johnson & Johnson,JNJ,Healthcare,A,34.9,34.77,4.22,16.03,0,0,0,0
+BON-023,bond,corporate_bond,Issuer Goldman Sachs,GS,Financials,BB,58.8,57.62,10.08,91.45,0,0,0,0
+BON-024,bond,corporate_bond,Issuer JPMorgan,JPM,Financials,A,53.2,50.26,2.82,7.16,0,0,0,0
+BON-025,bond,corporate_bond,Issuer Amazon,AMZN,Consumer Discretionary,A,62.1,61.0,9.13,75.02,0,0,0,0
+BON-026,bond,corporate_bond,Issuer Google,GOOGL,Technology,BBB,43.6,43.29,10.97,108.31,0,0,0,0
+BON-027,bond,corporate_bond,Issuer Coca-Cola,KO,Consumer Staples,AA,66.0,67.88,3.03,8.26,0,0,0,0
+BON-028,bond,corporate_bond,Issuer Goldman Sachs,GS,Financials,BB,40.5,38.71,4.64,19.38,0,0,0,0
+BON-029,bond,corporate_bond,Issuer Apple,AAPL,Technology,BB,80.7,79.9,4.37,17.19,0,0,0,0
+BON-030,bond,corporate_bond,Issuer Nvidia,NVDA,Technology,BBB,83.4,80.89,9.83,86.97,0,0,0,0
+BON-031,bond,corporate_bond,Issuer Walmart,WMT,Consumer Staples,BBB,29.9,28.59,5.37,25.95,0,0,0,0
+BON-032,bond,corporate_bond,Issuer Walmart,WMT,Consumer Staples,AA,59.9,56.98,6.4,36.86,0,0,0,0
+BON-033,bond,corporate_bond,Issuer Wells Fargo,WFC,Financials,A,33.0,32.89,4.17,15.65,0,0,0,0
+BON-034,bond,corporate_bond,Issuer Google,GOOGL,Technology,AA,69.9,72.54,9.34,78.51,0,0,0,0
+BON-035,bond,corporate_bond,Issuer Coca-Cola,KO,Consumer Staples,A,24.6,24.48,6.28,35.49,0,0,0,0
+BON-036,bond,corporate_bond,Issuer Goldman Sachs,GS,Financials,BBB,80.4,77.28,5.81,30.38,0,0,0,0
+BON-037,bond,corporate_bond,Issuer Coca-Cola,KO,Consumer Staples,BB,66.7,65.36,8.42,63.81,0,0,0,0
+BON-038,bond,corporate_bond,Issuer Wells Fargo,WFC,Financials,BBB,82.5,79.6,6.06,33.05,0,0,0,0
+DER-039,derivative,equity_swap,Dealer 01,GOOGL,Technology,A,26.9,-0.17,0,0,0,0,0.69,0
+DER-040,derivative,equity_swap,Dealer 02,JPM,Financials,A,10.4,-0.17,0,0,0,0,0.75,0
+DER-041,derivative,equity_swap,Dealer 03,GOOGL,Technology,A,55.3,-0.87,0,0,0,0,0.83,0
+DER-042,derivative,equity_swap,Dealer 04,JPM,Financials,A,23.9,0.3,0,0,0,0,0.64,0
+DER-043,derivative,equity_swap,Dealer 05,PFE,Healthcare,A,22.1,0.1,0,0,0,0,0.64,0
+DER-044,derivative,ir_swap,Dealer 06,,,A,64.1,-0.15,6.29,0,0,0,0,-1
+DER-045,derivative,ir_swap,Dealer 07,,,A,120.1,-1.58,6.65,0,0,0,0,1
+DER-046,derivative,ir_swap,Dealer 08,,,A,159.2,-1.2,7.0,0,0,0,0,1
+DER-047,derivative,ir_swap,Dealer 09,,,A,78.5,-0.75,5.24,0,0,0,0,-1
+DER-048,derivative,ir_swap,Dealer 10,,,A,119.4,-0.2,7.37,0,0,0,0,1
+EQU-049,equity,cash_equity,Trading Book 01,KO,Consumer Staples,,21.4,21.4,0,0,0,0,0,0
+EQU-050,equity,cash_equity,Trading Book 02,KO,Consumer Staples,,69.3,69.3,0,0,0,0,0,0
+EQU-051,equity,cash_equity,Trading Book 03,GOOGL,Technology,,75.2,75.2,0,0,0,0,0,0
+EQU-052,equity,cash_equity,Trading Book 04,JPM,Financials,,25.8,25.8,0,0,0,0,0,0
+EQU-053,equity,cash_equity,Trading Book 05,PFE,Healthcare,,46.3,46.3,0,0,0,0,0,0
+EQU-054,equity,cash_equity,Trading Book 06,XOM,Energy,,73.7,73.7,0,0,0,0,0,0
+EQU-055,equity,cash_equity,Trading Book 07,NVDA,Technology,,39.6,39.6,0,0,0,0,0,0
+EQU-056,equity,cash_equity,Trading Book 08,XOM,Energy,,32.2,32.2,0,0,0,0,0,0
+EQU-057,equity,cash_equity,Trading Book 09,JNJ,Healthcare,,33.5,33.5,0,0,0,0,0,0
+EQU-058,equity,cash_equity,Trading Book 10,KO,Consumer Staples,,58.0,58.0,0,0,0,0,0,0
+EQU-059,equity,cash_equity,Trading Book 11,PFE,Healthcare,,25.1,25.1,0,0,0,0,0,0
+EQU-060,equity,cash_equity,Trading Book 12,BAC,Financials,,29.2,29.2,0,0,0,0,0,0

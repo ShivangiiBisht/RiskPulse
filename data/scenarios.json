@@ -1,0 +1,55 @@
+[
+  {
+    "id": "bank-run",
+    "name": "Regional bank run",
+    "description": "Synthetic headlines modelled on a banking-stress episode (credit contagion across financials).",
+    "headlines": [
+      {"text": "Regional lender halts withdrawals as depositors rush for exits, bank run fears spread", "minutes": 0},
+      {"text": "JPMorgan and Bank of America shares tumble as downgrade risk and loan losses mount", "minutes": 20},
+      {"text": "Regulators step in to seize troubled regional bank amid liquidity crisis", "minutes": 40},
+      {"text": "Citigroup and Wells Fargo face credit rating downgrade as contagion fears grow", "minutes": 60}
+    ]
+  },
+  {
+    "id": "oil-shock",
+    "name": "Geopolitical oil shock",
+    "description": "Escalating conflict, sanctions on an energy exporter and an oil price spike.",
+    "headlines": [
+      {"text": "Missile strikes escalate regional conflict as oil prices surge", "minutes": 0},
+      {"text": "Sanctions announced on major energy exporter, global markets tumble", "minutes": 25},
+      {"text": "Exxon and Chevron rally as crude jumps on supply fears", "minutes": 45},
+      {"text": "Tesla and Amazon slide as supply chain disruption fears grow", "minutes": 70}
+    ]
+  },
+  {
+    "id": "hawkish-fed",
+    "name": "Hawkish central bank surprise",
+    "description": "Rate-hike signalling, rising yields and recession warnings.",
+    "headlines": [
+      {"text": "Federal Reserve signals more interest rate hikes as inflation stays hot", "minutes": 0},
+      {"text": "Treasury yields jump as Nvidia and Microsoft shares slide", "minutes": 30},
+      {"text": "Goldman Sachs warns of recession risk and weaker earnings next year", "minutes": 55}
+    ]
+  },
+  {
+    "id": "tech-antitrust",
+    "name": "Big tech antitrust crackdown",
+    "description": "Regulatory probes and fines hitting large technology platforms.",
+    "headlines": [
+      {"text": "Regulators file antitrust lawsuit against Google over search dominance", "minutes": 0},
+      {"text": "Meta Platforms faces probe over data practices, fine possible", "minutes": 30},
+      {"text": "Apple fined by EU commission over app store rules", "minutes": 50}
+    ]
+  },
+  {
+    "id": "earnings-rally",
+    "name": "Blockbuster earnings and product wave",
+    "description": "Positive scenario: strong earnings, product launches and approvals.",
+    "headlines": [
+      {"text": "Nvidia beats earnings estimates, raises guidance on record demand", "minutes": 0},
+      {"text": "Apple unveils new iPhone lineup as analysts upgrade shares", "minutes": 25},
+      {"text": "Microsoft reports strong cloud growth and announces dividend increase", "minutes": 45},
+      {"text": "Pfizer wins approval for breakthrough drug, shares surge", "minutes": 65}
+    ]
+  }
+]
