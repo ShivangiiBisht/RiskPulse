@@ -1,0 +1,3 @@
+# Optional: real FinBERT sentiment (set SENTIMENT_BACKEND=auto or finbert) and zero-shot events
+transformers>=4.40
+torch>=2.2
