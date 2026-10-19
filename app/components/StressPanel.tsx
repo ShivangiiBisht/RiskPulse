@@ -11,10 +11,10 @@ export function StressResultView({ result }: { result: StressResult }) {
       <div className="flex flex-wrap items-center gap-3">
         <span className="font-semibold">{result.event_type}</span>
         <ImpactBadge impact={result.impact} />
-        <span className="text-zinc-500">shock scale ×{result.scale}</span>
-        {result.tickers.length > 0 && <span className="text-zinc-500">linked: {result.tickers.join(", ")}</span>}
+        <span className="text-muted">shock scale ×{result.scale}</span>
+        {result.tickers.length > 0 && <span className="text-muted">linked: {result.tickers.join(", ")}</span>}
       </div>
-      {result.headline && <p className="italic text-zinc-600 dark:text-zinc-400">Triggered by: {result.headline}</p>}
+      {result.headline && <p className="italic text-muted">Triggered by: {result.headline}</p>}
 
       <div className="grid gap-3 sm:grid-cols-3">
         <Big label="Portfolio value before" value={money(result.before)} />
@@ -26,8 +26,8 @@ export function StressResultView({ result }: { result: StressResult }) {
         {result.by_asset_class.map((c) => (
           <div key={c.asset_class} className="grid grid-cols-[90px_1fr_190px] items-center gap-3">
             <span className="capitalize">{c.asset_class}</span>
-            <div className="h-3 rounded bg-zinc-200 dark:bg-zinc-800">
-              <div className="h-3 rounded bg-red-500" style={{ width: `${(Math.abs(c.pnl) / maxLoss) * 100}%` }} />
+            <div className="h-3 rounded bg-track">
+              <div className="h-3 rounded bg-neg" style={{ width: `${(Math.abs(c.pnl) / maxLoss) * 100}%` }} />
             </div>
             <span className="tabular-nums text-xs">
               {money(c.before)} → {money(c.after)} ({c.pnl_pct}%)
@@ -42,20 +42,20 @@ export function StressResultView({ result }: { result: StressResult }) {
           <table className="w-full text-left text-xs">
             <tbody>
               {result.top_losers.slice(0, 6).map((row) => (
-                <tr key={row.asset_id} className="border-t border-zinc-200 dark:border-zinc-800">
+                <tr key={row.asset_id} className="border-t border-line">
                   <td className="py-1">{row.asset_id}</td>
                   <td>{row.ticker || "-"}{row.linked_to_event && " ●"}</td>
-                  <td className="text-zinc-500">{row.counterparty}</td>
-                  <td className="text-right tabular-nums text-red-600">{money(row.pnl)}</td>
+                  <td className="text-muted">{row.counterparty}</td>
+                  <td className="text-right tabular-nums text-neg">{money(row.pnl)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <p className="mt-1 text-xs text-zinc-500">● = asset linked to a company named in the event (1.5× idiosyncratic shock)</p>
+          <p className="mt-1 text-xs text-muted">● = asset linked to a company named in the event (1.5× idiosyncratic shock)</p>
         </div>
         <div>
           <div className="mb-1 font-medium">Shocks applied</div>
-          <ul className="text-xs text-zinc-600 dark:text-zinc-400">
+          <ul className="text-xs text-muted">
             <li>Equity: {(result.shocks.equity_shock * 100).toFixed(0)}% × scale × beta</li>
             <li>Rates: {result.shocks.rate_shift_bp >= 0 ? "+" : ""}{result.shocks.rate_shift_bp} bp × scale</li>
             <li>Credit spreads: +{result.shocks.spread_shift_bp} bp × scale × rating multiplier</li>
@@ -69,9 +69,9 @@ export function StressResultView({ result }: { result: StressResult }) {
 
 function Big({ label, value, negative }: { label: string; value: string; negative?: boolean }) {
   return (
-    <div className="rounded border border-zinc-200 p-3 dark:border-zinc-800">
-      <div className="text-xs text-zinc-500">{label}</div>
-      <div className={`text-lg font-semibold ${negative ? "text-red-600" : ""}`}>{value}</div>
+    <div className="rounded-md border border-line p-3">
+      <div className="text-xs text-muted">{label}</div>
+      <div className={`text-lg font-semibold ${negative ? "text-neg" : ""}`}>{value}</div>
     </div>
   );
 }
@@ -111,7 +111,7 @@ export default function StressPanel() {
         {auto.data?.triggered && auto.data.result ? (
           <StressResultView result={auto.data.result} />
         ) : (
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-muted">
             {auto.data?.reason ?? "Loading..."} A stress test fires automatically when the engine detects an event with
             impact ≥ 7. Try a scenario in the Sandbox tab.
           </p>

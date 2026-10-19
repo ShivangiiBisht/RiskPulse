@@ -11,7 +11,7 @@ export function tickerColor(tickers: string[], ticker: string) {
 export default function StackedArea({ timeline }: { timeline: Timeline }) {
   const { points, tickers } = timeline;
   if (points.length < 2) {
-    return <p className="text-sm text-zinc-500">Need at least two rebalance points. Ingest data or run a sandbox scenario.</p>;
+    return <p className="text-sm text-muted">Need at least two rebalance points. Ingest data or run a sandbox scenario.</p>;
   }
   const plotW = W - LEFT - 8, plotH = H - TOP - BOTTOM;
   const x = (i: number) => LEFT + (i / (points.length - 1)) * plotW;

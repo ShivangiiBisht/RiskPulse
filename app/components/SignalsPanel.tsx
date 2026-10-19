@@ -39,12 +39,12 @@ export default function SignalsPanel() {
           </div>
         }
       >
-        <p className="mb-3 text-xs text-zinc-500">
+        <p className="mb-3 text-xs text-muted">
           Each row: entity, sentiment [-1, 1], event class, impact [1-10]. Click a row to see why the impact score is what it is.
         </p>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
-            <thead className="text-zinc-500">
+            <thead className="text-muted">
               <tr>
                 <th className="py-1 pr-3">Time</th><th className="pr-3">Entity</th><th className="pr-3">Sentiment</th>
                 <th className="pr-3">Event</th><th className="pr-3">Impact</th><th>Evidence</th>
@@ -52,13 +52,13 @@ export default function SignalsPanel() {
             </thead>
             <tbody>
               {(signals.data ?? []).length === 0 && (
-                <tr><td colSpan={6} className="py-4 text-center text-zinc-500">No signals yet. Ingest data first.</td></tr>
+                <tr><td colSpan={6} className="py-4 text-center text-muted">No signals yet. Ingest data first.</td></tr>
               )}
               {(signals.data ?? []).map((s) => (
                 <Fragment key={s.signal_id}>
-                  <tr className="cursor-pointer border-t border-zinc-200 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900"
+                  <tr className="cursor-pointer border-t border-line hover:bg-surface-2"
                       onClick={() => setOpen(open === s.signal_id ? null : s.signal_id)}>
-                    <td className="whitespace-nowrap py-1.5 pr-3 text-zinc-500">{shortTime(s.timestamp)}</td>
+                    <td className="whitespace-nowrap py-1.5 pr-3 text-muted">{shortTime(s.timestamp)}</td>
                     <td className="pr-3 font-medium">{s.entity}</td>
                     <td className="pr-3"><SentimentCell value={s.sentiment} /></td>
                     <td className="pr-3">{s.event_type}</td>
@@ -66,7 +66,7 @@ export default function SignalsPanel() {
                     <td>{s.text_snippet}</td>
                   </tr>
                   {open === s.signal_id && (
-                    <tr className="bg-zinc-50 text-xs dark:bg-zinc-900">
+                    <tr className="bg-surface-2 text-xs">
                       <td colSpan={6} className="px-3 py-2">
                         impact = 1 + 9 × severity {s.breakdown.severity} × magnitude {s.breakdown.magnitude} × credibility{" "}
                         {s.breakdown.credibility} × corroboration {s.breakdown.corroboration_boost} (n={s.breakdown.corroboration})
