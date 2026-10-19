@@ -1,9 +1,13 @@
 # RiskPulse: AI/NLP Risk Engine with Tactical Rebalancing and Event-Driven Stress Testing - S&P Global & Crisil Campus Hackathon
 
 **Candidate Name:** Shivangi Bisht
+
 **College Email ID:** shivangi185btcseai24@igdtuw.ac.in
+
 **College / Campus:** Indira Gandhi Delhi Technical University for Women
+
 **Demo Video Link:** [\[YouTube unlisted link\]](https://youtu.be/EB2u-bm1iiA)
+
 **Slide Deck Link (if hosted externally):** [\[presentation link\]](https://drive.google.com/file/d/1VTJw0oq697NcqbUNJYUfujPqbSNOgRS0/view?usp=sharing)
 
 ## 1. Project Overview / Problem Statement & Approach
